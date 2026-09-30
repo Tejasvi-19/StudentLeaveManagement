@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apply for Leave</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f4f7;
+            margin: 0;
+        }
+
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .form-box {
+            background: white;
+            width: 450px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .message {
+            text-align: center;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Student Leave Management System</h1>
+</div>
+
+<div class="form-box">
+
+    <h2>Apply for Leave</h2>
+
+    <form method="POST">
+
+        <label>From Date</label>
+        <input type="date" name="from_date" required>
+
+        <label>To Date</label>
+        <input type="date" name="to_date" required>
+
+        <label>Reason for Leave</label>
+        <textarea name="reason" placeholder="Enter reason for leave..." required></textarea>
+
+        <button type="submit">Submit Leave Request</button>
+
+    </form>
+
+    <a href="/student" class="back">← Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>

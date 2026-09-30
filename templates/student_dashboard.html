@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f4f7;
+            margin: 0;
+        }
+
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 40px auto;
+        }
+
+        .welcome {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            flex: 1;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .logout {
+            background-color: #c0392b !important;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Student Leave Management System</h1>
+</div>
+
+<div class="container">
+
+    <div class="welcome">
+        <h2>Welcome, {{ name }}!</h2>
+        <p>You are logged in as a student.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Apply for Leave</h3>
+            <p>Submit a new leave request.</p>
+            <a href="/apply-leave">Apply Leave</a>
+        </div>
+
+        <div class="card">
+            <h3>My Leave Requests</h3>
+            <p>View your previous leave applications.</p>
+            <a href="/my-leaves">View Requests</a>
+        </div>
+
+        <div class="card">
+            <h3>Logout</h3>
+            <p>Logout from your account.</p>
+            <a href="/logout" class="logout">Logout</a>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

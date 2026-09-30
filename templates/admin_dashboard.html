@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f4f7;
+            margin: 0;
+        }
+
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 95%;
+            margin: 30px auto;
+        }
+
+        .welcome {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        .approve {
+            background-color: green;
+            color: white;
+            padding: 7px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .reject {
+            background-color: red;
+            color: white;
+            padding: 7px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .logout {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #c0392b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .pending {
+            color: orange;
+            font-weight: bold;
+        }
+
+        .approved {
+            color: green;
+            font-weight: bold;
+        }
+
+        .rejected {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Student Leave Management System</h1>
+</div>
+
+<div class="container">
+
+    <div class="welcome">
+        <h2>Admin Dashboard</h2>
+        <p>Welcome, {{ name }}</p>
+    </div>
+
+    {% if leaves %}
+
+    <table>
+
+        <tr>
+            <th>Student Name</th>
+            <th>From Date</th>
+            <th>To Date</th>
+            <th>Reason</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+        {% for leave in leaves %}
+
+        <tr>
+
+            <td>{{ leave["student_name"] }}</td>
+
+            <td>{{ leave["from_date"] }}</td>
+
+            <td>{{ leave["to_date"] }}</td>
+
+            <td>{{ leave["reason"] }}</td>
+
+            <td class="{{ leave['status'].lower() }}">
+                {{ leave["status"] }}
+            </td>
+
+            <td>
+
+                {% if leave["status"] == "Pending" %}
+
+                <form method="POST" action="/update-leave/{{ leave['id'] }}" style="display:inline;">
+
+                    <input type="hidden" name="status" value="Approved">
+
+                    <button type="submit" class="approve">
+                        Approve
+                    </button>
+
+                </form>
+
+                <form method="POST" action="/update-leave/{{ leave['id'] }}" style="display:inline;">
+
+                    <input type="hidden" name="status" value="Rejected">
+
+                    <button type="submit" class="reject">
+                        Reject
+                    </button>
+
+                </form>
+
+                {% else %}
+
+                No Action
+
+                {% endif %}
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+    <p style="text-align:center;">
+        No leave requests available.
+    </p>
+
+    {% endif %}
+
+    <a href="/logout" class="logout">Logout</a>
+
+</div>
+
+</body>
+</html>
